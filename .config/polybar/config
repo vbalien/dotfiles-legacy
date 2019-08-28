@@ -18,12 +18,13 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00000000
-background-alt = #f00
-background-label = #ffffff
+background = #000000
+background-focused = #dd5555
+background-label = #000000
 ;foreground = ${xrdb:color7:#222}
-foreground = #555
-foreground-alt = #dfdfdf
+foreground = #ccc
+foreground-focused = #fff
+foreground-alt = #ccc
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -58,7 +59,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = xbacklight pulseaudio eth wlan battery date
+modules-right = xbacklight mpd pulseaudio eth wlan battery date
 
 tray-position = right
 tray-padding = 2
@@ -82,8 +83,8 @@ label = %title:0:50:...%
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-foreground = ${colors.foreground-alt}
+label-focused-background = ${colors.background-focused}
+label-focused-foreground = ${colors.foreground-focused}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -106,13 +107,11 @@ label-empty-padding = 2
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <label-song>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+host = ${env:MPD_HOST}
+port = 6600
+password = ${env:MPD_PASSWORD}
 
 label-song-maxlen = 25
 label-song-ellipsis = true

@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
- rofi -theme lb-numix -font "fira sans 10" -show drun
+ rofi -show combi
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -16,7 +16,7 @@ super + Escape
 
 # lock screen
 super + l
- i3lock-fancy
+ $HOME/.config/sxhkd/rofi-system-menu.sh
 
 # screen capture
 super + alt + {3,4}
@@ -65,10 +65,6 @@ super + ctrl + {m,x,y,z}
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
  bspc node -{f,s} {west,south,north,east}
-
-# focus the node for the given path jump
-super + {p,b,comma,period}
- bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -127,6 +123,12 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
  bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# toggle pip mode
+super + p
+ bspc node -g sticky; \
+ bspc node --state \~floating; \
+ xdotool getactivewindow windowsize 650 360 windowmove 1240 690
 
 XF86AudioMute
  pactl set-sink-mute @DEFAULT_SINK@ toggle

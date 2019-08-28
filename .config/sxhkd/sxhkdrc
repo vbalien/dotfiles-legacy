@@ -128,7 +128,7 @@ super + {Left,Down,Up,Right}
 super + p
  bspc node -g sticky; \
  bspc node --state \~floating; \
- xdotool getactivewindow windowsize 650 360 windowmove 1240 690
+ xdotool getactivewindow windowsize 426 240 windowmove $(expr 1920 - 426 - 45) $(expr 1080 - 240 - 30)
 
 XF86AudioMute
  pactl set-sink-mute @DEFAULT_SINK@ toggle

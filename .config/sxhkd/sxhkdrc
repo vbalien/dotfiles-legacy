@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
- rofi -show combi
+ rofi -show drun -run-shell-command '{terminal} -e \" {cmd}; read -n 1 -s\"'
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -19,8 +19,8 @@ super + l
  $HOME/.config/sxhkd/rofi-system-menu.sh
 
 # screen capture
-super + alt + {3,4}
- maim -u {_,-s} | xclip -selection clipboard -t image/png
+super + ctrl + shift + {3,4}
+ maim -u { ~/Pictures/screenshot.png ,-s | xclip -selection clipboard -t image/png }
 
 #
 # bspwm hotkeys
@@ -51,12 +51,15 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,f, shift + f}
  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
  bspc node -g {marked,locked,sticky,private}
+
+super + s
+ bspc node -g sticky
 
 #
 # focus/swap
@@ -66,9 +69,9 @@ super + ctrl + {m,x,y,z}
 super + {_,shift + }{h,j,k,l}
  bspc node -{f,s} {west,south,north,east}
 
-# focus the next/previous node in the current desktop
-super + {_,shift + }c
- bspc node -f {next,prev}.local
+# focus the next/previous node
+super + {_,shift + } Tab
+ bspc desktop -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -77,6 +80,9 @@ super + bracket{left,right}
 # focus the last node/desktop
 super + {grave,Tab}
  bspc {node,desktop} -f last
+
+alt + Tab 
+ bspc node -f next
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -128,7 +134,7 @@ super + {Left,Down,Up,Right}
 super + p
  bspc node -g sticky; \
  bspc node --state \~floating; \
- xdotool getactivewindow windowsize 426 240 windowmove $(expr 1920 - 426 - 45) $(expr 1080 - 240 - 30)
+ xdotool getactivewindow windowsize 640 360 windowmove $(expr 1920 - 640 - 45) $(expr 1080 - 360 - 30)
 
 XF86AudioMute
  pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -140,8 +146,8 @@ XF86AudioRaiseVolume
  pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 XF86MonBrightnessUp
- light -A 10
+ light -A 5
 
 XF86MonBrightnessDown
- light -U 10
+ light -U 5
 

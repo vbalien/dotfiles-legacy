@@ -11,4 +11,11 @@ export LIBVA_DRIVER_NAME=iHD
 export GTK_THEME=Numix:dark
 export GTK2_RC_FILES=/usr/share/themes/Numix/gtk-2.0/gtkrc
 
+export WINIT_HIDPI_FACTOR=1
+
+export LIBVA_DRIVER_NAME=radeonsi
+
+xset s on
+xset s 600
+
 source ~/.xprofile.private

@@ -18,19 +18,21 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000000
+background = #d9000000
 background-focused = #dd5555
-background-label = #000000
+background-label = #d9000000
 ;foreground = ${xrdb:color7:#222}
 foreground = #ccc
 foreground-focused = #fff
 foreground-alt = #ccc
 primary = #ffb52a
-secondary = #e60053
+secondary = #dd5555
 alert = #bd2c40
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-0}
+locale = ja_JP.UTF-8
+
 width = 100%
 height = 25
 ;offset-x = 1%
@@ -50,16 +52,16 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+font-0 = TerminessTTF Nerd Font:size=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm
+modules-left = logo bspwm
 modules-center = xwindow
-modules-right = xbacklight mpd pulseaudio eth wlan battery date
+modules-right = mpd pulseaudio eth wlan battery date
 
 tray-position = right
 tray-padding = 2
@@ -75,6 +77,18 @@ override-redirect = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[module/logo]
+type = custom/text
+content = "  Arch Linux"
+content-foreground = ${colors.secondary}
+click-left=rofi -show
+
+[module/systemmenu]
+type = custom/text
+content = 拉
+content-foreground = ${colors.secondary}
+click-left=~/.config/sxhkd/rofi-system-menu.sh
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:50:...%
@@ -82,23 +96,23 @@ label = %title:0:50:...%
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-focused}
 label-focused-foreground = ${colors.foreground-focused}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %index%
+label-occupied = %name%:%index%
 label-occupied-background = ${colors.background-label}
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = %name%:%index%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = %name%:%index%
 label-empty-background = ${colors.background-label}
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = #888888
 label-empty-padding = 2
 
 ; Separator in between workspaces
@@ -107,12 +121,18 @@ label-empty-padding = 2
 
 [module/mpd]
 type = internal/mpd
+format-online-prefix = "ﱘ "
+;format-online-prefix-foreground = ${colors.secondary}
 format-online = <label-song>
+format-online-underline = ${colors.secondary}
+
+format-offline =
 
 host = ${env:MPD_HOST}
 port = 6600
 password = ${env:MPD_PASSWORD}
 
+label-song = %title%
 label-song-maxlen = 25
 label-song-ellipsis = true
 
@@ -139,21 +159,18 @@ interface = wlp0s20f3
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.secondary}
 label-connected = %essid%
 
-format-disconnected =
+format-disconnected = ﲁ
+;format-disconnected-foreground = ${colors.secondary}
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-0 = 說
+;ramp-signal-foreground = ${colors.secondary}
 
 [module/eth]
 type = internal/network
@@ -161,8 +178,8 @@ interface = enp0s31f6
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix = "ﯱ"
+;format-connected-prefix-foreground = ${colors.secondary}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -175,27 +192,31 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = " %Y年%m月%d日 %A"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %H時%M分
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-prefix = 
+;format-prefix-foreground = ${colors.secondary}
+format-underline = ${colors.secondary}
 
 label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.secondary}
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = 婢 muted
 label-muted-foreground = #666
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+;ramp-volume-foreground = ${colors.secondary}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -220,32 +241,27 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+label-charging = %percentage%%
+label-discharging = %percentage%%
+;label-full = 
 
-format-discharging = <animation-discharging> <label-discharging>
+format-charging-prefix = " "
+format-charging = <label-charging>
+format-charging-underline = ${colors.secondary}
+
+format-discharging =  <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+format-full = <ramp-capacity> <label-full>
+format-full-underline = ${colors.secondary}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+;ramp-capacity-foreground = ${colors.secondary}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
 
 [settings]
 screenchange-reload = true

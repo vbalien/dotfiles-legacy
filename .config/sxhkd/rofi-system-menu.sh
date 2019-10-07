@@ -16,7 +16,8 @@ content="$lock\n$quit\n$suspend\n$reboot\n$shutdown"
 selection=$(echo -e $content | rofi -dmenu -i -markup-rows -p "Action: ")
 case $selection in
     $lock)
-        i3lock-fancy ;;
+        # i3lock-fancy -n ;;
+        ~/.config/bspwm/lock.sh ;;
     $quit)
         [[ $(confirm) = 1 ]] && (bspc quit) ;;
     $suspend)

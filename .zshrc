@@ -78,6 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR="nvim"
 export TERM=xterm-256color
+export SEGMENT_SEPARATOR=$'\ue0b4'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

@@ -1,0 +1,5 @@
+# vim: set ft=toml ts=2 sw=2 et :
+
+[darwin]
+"macos/zshrc"     = "~/.zshrc"
+"macos/alacritty" = "~/.config/alacritty"

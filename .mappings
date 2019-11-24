@@ -1,5 +1,8 @@
 # vim: set ft=toml ts=2 sw=2 et :
 
+[general]
+gitconfig         = "~/.gitconfig"
+
 [darwin]
 "macos/zshrc"     = "~/.zshrc"
 "macos/alacritty" = "~/.config/alacritty"

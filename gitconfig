@@ -1,0 +1,6 @@
+[commit]
+	gpgsign = true
+[user]
+	signingkey = 0DD2E02DF04268B2
+	name = Jisu Kim
+	email = vbalien@live.jp

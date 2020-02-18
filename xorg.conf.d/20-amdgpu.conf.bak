@@ -1,0 +1,6 @@
+Section "Device"
+    Identifier "AMD"
+    Driver "amdgpu" 
+    BusID "PCI:07:0:0"
+EndSection
+

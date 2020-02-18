@@ -21,7 +21,7 @@ bspc rule -a smplayer state=floating sticky=on
 
 killall /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 killall btops; btops &
-killall compton; compton --config ~/.config/compton.conf -b &
+killall picom; picom --config ~/.config/compton.conf -b --experimental-backends &
 killall fcity; fcitx -dr &
 killall telegram; telegram &
 # killall x0vncserver; x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
@@ -39,6 +39,7 @@ conditional_run mpd
 conditional_run dunst
 conditional_run thunderbird
 conditional_run /usr/lib/gsd-xsettings
+conditional_run slack
 mpc -h localhost add https://music.alien.moe
 mpc -h localhost stop
 libinput-gestures-setup restart
@@ -46,21 +47,24 @@ libinput-gestures-setup restart
 gnome-keyring-daemon --start --components=pkcs11 &
 
 # Wallpaper
-feh --bg-fill ~/.config/wallpaper/wallpaper2.jpeg &
+# feh --bg-fill ~/.config/wallpaper/wallpaper2.jpeg &
+nitrogen --restore &
 
 # Elan input setting
 xinput set-prop 'Elan Touchpad' 'libinput Tapping Enabled' 1
 xinput set-prop 'Elan Touchpad' 'libinput Natural Scrolling Enabled' 1
 # magic trackpad 2
-xinput set-prop 'Apple Inc. Magic Trackpad 2' 'libinput Accel Speed' 0.5
+xinput set-prop 'Apple Inc. Magic Trackpad 2' 'libinput Accel Speed' 0.3
 xinput set-prop 'Apple Inc. Magic Trackpad 2' 'libinput Natural Scrolling Enabled' 1
+# Logitech G402
+xinput set-prop 'Logitech Gaming Mouse G402' 'libinput Accel Speed' -0.8
 
 # Default Cursor
 xsetroot -cursor_name left_ptr
 
 bspc rule -a '*:zathura' state=tiled
-
-bspc monitor -d        
+bspc rule -a Teamviewer state=floating
+bspc rule -a Transgui state=floating
 
 bspc config border_width         0
 bspc config window_gap           0

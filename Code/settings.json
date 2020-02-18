@@ -1,0 +1,60 @@
+{
+    "C_Cpp.updateChannel": "Insiders",
+    "editor.fontFamily": "'TerminessTTF Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.tabSize": 2,
+    "explorer.confirmDelete": false,
+    "workbench.sideBar.location": "right",
+    "vim.neovimPath": "/usr/bin/nvim",
+    "C_Cpp.default.includePath": [
+        "/usr/local/include"
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tslint.packageManager": "yarn",
+    "vim.useSystemClipboard": true,
+    "files.autoGuessEncoding": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[rust]": {
+        "editor.tabSize": 4
+    },
+    "eslint.alwaysShowStatus": true,
+    "eslint.packageManager": "yarn",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Twilight",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#dd5555",
+        "list.activeSelectionBackground": "#dd5555",
+        "badge.background": "#dd5555",
+        "activityBarBadge.background": "#dd5555",
+        "menu.background": "#dd5555",
+        "list.focusBackground": "#dd5555",
+        "activityBar.activeBorder": "#dd5555",
+        "activityBar.foreground": "#dd5555",
+        "activityBar.inactiveForeground": "#fff",
+        "focusBorder": "#dd5555",
+        "terminal.ansiBlue": "#dd5555",
+    },
+    "vim.cursorStylePerMode.insert": "block",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "block",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visualline": "block",
+    "vim.enableNeovim": true
+}

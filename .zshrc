@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.yarn/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.yarn/bin:$HOME/.cargo/bin
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/vbalien/.oh-my-zsh"
@@ -69,6 +69,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+fpath+=~/.zfunc
+
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
@@ -79,6 +81,9 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 export TERM=xterm-256color
 export SEGMENT_SEPARATOR=$'\ue0b4'
+
+export VCPKG_ROOT="/home/vbalien/Documents/vcpkg"
+export VCPKG_DOWNLOADS="/var/cache/vcpkg"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -101,6 +106,9 @@ export SEGMENT_SEPARATOR=$'\ue0b4'
 # Example aliases
 alias vim="nvim"
 alias open="xdg-open"
+alias pip="pip3"
+alias python="python3"
+alias cat="bat"
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -110,3 +118,4 @@ neofetch
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/nvm/init-nvm.sh

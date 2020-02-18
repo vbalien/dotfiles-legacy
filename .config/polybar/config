@@ -30,7 +30,7 @@ secondary = #dd5555
 alert = #bd2c40
 
 [bar/mybar]
-;monitor = ${env:MONITOR:HDMI-0}
+# monitor = ${env:MONITOR}
 locale = ja_JP.UTF-8
 
 width = 100%

@@ -1,0 +1,278 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #d9000000
+background-focused = #dd5555
+background-label = #d9000000
+;foreground = ${xrdb:color7:#222}
+foreground = #ccc
+foreground-focused = #fff
+foreground-alt = #ccc
+primary = #ffb52a
+secondary = #dd5555
+alert = #bd2c40
+
+[bar/mybar]
+# monitor = ${env:MONITOR}
+locale = ja_JP.UTF-8
+
+width = 100%
+height = 25
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = TerminessTTF Nerd Font:size=12;1
+font-1 = D2Coding:size=10;1
+# font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+
+modules-left = logo bspwm
+modules-center = xwindow
+modules-right = mpd pulseaudio eth wlan battery date
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = bspwm
+
+override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/logo]
+type = custom/text
+content = "  Arch Linux"
+content-foreground = ${colors.secondary}
+click-left=rofi -show
+
+[module/systemmenu]
+type = custom/text
+content = 拉
+content-foreground = ${colors.secondary}
+click-left=~/.config/sxhkd/rofi-system-menu.sh
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:50:...%
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = "%name% "
+label-focused-background = ${colors.background-focused}
+label-focused-foreground = ${colors.foreground-focused}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %name% :%index%
+label-occupied-background = ${colors.background-label}
+label-occupied-padding = 2
+
+label-urgent = %name% :%index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %name% :%index%
+label-empty-background = ${colors.background-label}
+label-empty-foreground = #888888
+label-empty-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
+[module/mpd]
+type = internal/mpd
+format-online-prefix = "ﱘ "
+;format-online-prefix-foreground = ${colors.secondary}
+format-online = <label-song>
+format-online-underline = ${colors.secondary}
+
+format-offline =
+
+host = ${env:MPD_HOST}
+port = 6600
+password = ${env:MPD_PASSWORD}
+
+label-song = %title%
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.secondary}
+label-connected = %essid%
+
+format-disconnected = ﲁ
+;format-disconnected-foreground = ${colors.secondary}
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 說
+;ramp-signal-foreground = ${colors.secondary}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = "ﯱ"
+;format-connected-prefix-foreground = ${colors.secondary}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %Y年%m月%d日 %A"
+
+time = %H時%M分
+
+format-prefix = 
+;format-prefix-foreground = ${colors.secondary}
+format-underline = ${colors.secondary}
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.secondary}
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = 婢 muted
+label-muted-foreground = #666
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+;ramp-volume-foreground = ${colors.secondary}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+;label-full = 
+
+format-charging-prefix = " "
+format-charging = <label-charging>
+format-charging-underline = ${colors.secondary}
+
+format-discharging =  <ramp-capacity>  <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full = <ramp-capacity>  <label-full>
+format-full-underline = ${colors.secondary}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+;ramp-capacity-foreground = ${colors.secondary}
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

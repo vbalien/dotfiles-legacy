@@ -1,0 +1,18 @@
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
+. ~/.config/utils/check-monitor.sh
+
+if is_dp_connected; then
+  . ~/.screenlayout/ExternalMonitorSetup.sh
+else
+  . ~/.screenlayout/Default.sh
+fi
+
+
+DEFAULTSESSION=bspwm
+case "$1" in
+  bspwm) exec bspwm ;;
+  *) exec $DEFAULTSESSION
+esac

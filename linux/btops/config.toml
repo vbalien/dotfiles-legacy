@@ -1,0 +1,48 @@
+remove-empty = true
+append-when-occupied = true
+renamers = ["classified", "client", "constant"]
+
+[names]
+constant = ""
+ 
+[[names.classified]]
+"" = ["TelegramDesktop"]
+
+[[names.classified]]
+"" = ["Alacritty"]
+
+[[names.classified]]
+"" = ["Google-chrome"]
+
+[[names.classified]]
+"" = ["Code"]
+
+[[names.classified]]
+"" = ["Org.gnome.Nautilus"]
+
+[[names.classified]]
+"" = ["Typora", "libreoffice", "Soffice", "Zathura", "Eog"]
+
+[[names.classified]]
+"" = ["Thunderbird", "Mail"]
+
+[[names.classified]]
+"" = ["scrcpy"]
+
+[[names.classified]]
+"" = ["Lutris"]
+
+[[names.classified]]
+"" = ["smplayer"]
+
+[[names.classified]]
+"" = ["jetbrains-studio"]
+
+[[names.classified]]
+"ﯲ" = ["Transgui"]
+
+[[names.classified]]
+"" = ["Slack"]
+
+[[names.classified]]
+"刺" = ["TeamViewer"]

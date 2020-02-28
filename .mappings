@@ -2,7 +2,37 @@
 
 [general]
 gitconfig         = "~/.gitconfig"
+ncmpcpp           = "~/.ncmpcpp"
+tmux.conf         = "~/.tmux.conf"
 
 [darwin]
 "macos/zshrc"     = "~/.zshrc"
 "macos/alacritty" = "~/.config/alacritty"
+
+[linux]
+"linux/xprofile"               = "~/.xprofile"
+"linux/zshrc"                  = "~/.zshrc"
+"linux/xinitrc"                = "~/.xinitrc"
+"linux/Xmodmap"                = "~/.Xmodmap"
+"linux/screenlayout"           = "~/.screenlayout"
+"linux/alacritty.yml"          = "~/.config/alacritty.yml"
+"linux/autostart"              = "~/.config/autostart"
+"linux/bspwm"                  = "~/.config/bspwm"
+"linux/btops"                  = "~/.config/btops"
+"linux/libinput-gestures.conf" = "~/.config/libinput-gestures.conf"
+"linux/mimeapps.list"          = "~/.config/mimeapps.list"
+"linux/nvim"                   = "~/.config/nvim"
+"linux/picom.conf"             = "~/.config/picom.conf"
+"linux/polybar"                = "~/.config/polybar"
+"linux/rofi"                   = "~/.config/rofi"
+"linux/sxhkd"                  = "~/.config/sxhkd"
+"linux/user-dirs.dirs"         = "~/.config/user-dirs.dirs"
+"linux/user-dirs.locale"       = "~/.config/user-dirs.locale"
+"linux/utils"                  = "~/.config/utils"
+"linux/vscode"                 = "~/.config/Code/User"
+"linux/wallpaper"              = "~/.config/wallpaper"
+# "linux/service/suspend@.service" = "/etc/systemd/system/suspend@.service"
+# "linux/xorg.conf.d"            = "/etc/X11/xorg.conf.d"
+# "linux/slim/slim.conf"         = "/etc/slim.conf"
+# "linux/slim/archlinux-aya"     = "/usr/share/slim/themes/archlinux-aya"
+

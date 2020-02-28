@@ -1,0 +1,15 @@
+visualizer_look = 
+visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
+song_columns_list_format = (20)[]{a} (6f)[red]{NE} (50)[white]{t|f:Title} (20)[white]{b} (7f)[red]{l}
+empty_tag_color = red
+state_line_color = red
+main_window_color = red
+color1 = red
+color2 = red
+statusbar_color = red
+player_state_color = red:b
+window_border_color = red
+progressbar_color = black
+progressbar_elapsed_color = red
+progressbar_look = ━━─
+current_item_prefix = $(red)$r

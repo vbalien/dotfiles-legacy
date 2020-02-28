@@ -1,0 +1,25 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export QT5_IM_MODULE=fcitx
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+export LIBVA_DRIVER_NAME=iHD
+
+export GTK_THEME=Numix:dark
+export GTK2_RC_FILES=/usr/share/themes/Numix/gtk-2.0/gtkrc
+
+export WINIT_HIDPI_FACTOR=1
+
+export LIBVA_DRIVER_NAME=radeonsi
+
+export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json:/usr/share/vulkan/icd.d/intel_icd.i686.json:/usr/share/vulkan/icd.d/amd_icd32.json:/usr/share/vulkan/icd.d/amd_icd64.json
+
+export BROWSER=google-chrome-stable
+
+xset s on
+xset s 600
+
+source ~/.xprofile.private

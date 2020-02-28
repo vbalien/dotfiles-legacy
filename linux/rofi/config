@@ -1,0 +1,4 @@
+rofi.combi-modi:    drun,window
+rofi.theme:         lb-numix
+rofi.font:          fira sans 10
+rofi.modi:          combi

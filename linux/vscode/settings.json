@@ -49,11 +49,6 @@
         "textLink.foreground": "#dd5555",
         "extensionButton.prominentBackground": "#dd5555"
     },
-    "vim.cursorStylePerMode.insert": "block",
-    "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.replace": "block",
-    "vim.cursorStylePerMode.visual": "block",
-    "vim.cursorStylePerMode.visualblock": "block",
-    "vim.cursorStylePerMode.visualline": "block",
+    "editor.formatOnSave": true,
     "vim.enableNeovim": true
 }

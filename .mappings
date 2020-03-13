@@ -10,11 +10,13 @@ tmux.conf         = "~/.tmux.conf"
 "macos/alacritty" = "~/.config/alacritty"
 
 [linux]
+"linux/gtkrc-2.0"              = "~/.gtkrc-2.0"
 "linux/xprofile"               = "~/.xprofile"
 "linux/zshrc"                  = "~/.zshrc"
 "linux/xinitrc"                = "~/.xinitrc"
 "linux/Xmodmap"                = "~/.Xmodmap"
 "linux/screenlayout"           = "~/.screenlayout"
+"linux/Trolltech.conf"         = "~/.config/Trolltech.conf"
 "linux/alacritty.yml"          = "~/.config/alacritty.yml"
 "linux/autostart"              = "~/.config/autostart"
 "linux/bspwm"                  = "~/.config/bspwm"

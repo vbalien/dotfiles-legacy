@@ -45,7 +45,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
 
-
 set smartindent
 set backspace=2
 set cindent
@@ -76,6 +75,7 @@ ca w!! w !sudo tee "%"
 
 " transparent
 hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 let g:airline_theme = 'codedark'
 " let g:airline_theme='bubblegum'

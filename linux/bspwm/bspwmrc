@@ -22,8 +22,8 @@ bspc rule -a smplayer state=floating sticky=on
 killall /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 killall btops; btops &
 killall picom; picom --config ~/.config/picom.conf -b --experimental-backends &
-killall fcity; fcitx -dr &
-killall telegram-desktop; telegram-desktop &
+killall fcitx; fcitx -dr &
+# killall telegram-desktop; telegram-desktop &
 # killall x0vncserver; x0vncserver -display :0 -passwordfile ~/.vnc/passwd &
 # killall xss-lock; xss-lock -- ~/.config/bspwm/lock.sh &
 $HOME/.config/polybar/launch.sh
@@ -40,8 +40,8 @@ conditional_run dunst
 conditional_run thunderbird
 conditional_run /usr/lib/gsd-xsettings
 conditional_run slack
-mpc -h localhost add https://music.alien.moe
-mpc -h localhost stop
+# mpc -h localhost add https://music.alien.moe
+# mpc -h localhost stop
 libinput-gestures-setup restart
 
 gnome-keyring-daemon --start --components=pkcs11 &

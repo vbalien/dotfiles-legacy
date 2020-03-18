@@ -80,7 +80,8 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 export EDITOR="nvim"
 export TERM=xterm-256color
-export SEGMENT_SEPARATOR=$'\ue0b4'
+# export SEGMENT_SEPARATOR=$'\ue0b4'
+export SEGMENT_SEPARATOR=$' '
 
 export VCPKG_ROOT="/home/vbalien/Documents/vcpkg"
 export VCPKG_DOWNLOADS="/var/cache/vcpkg"
@@ -113,6 +114,7 @@ alias cat="bat"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+wmname bspwm
 neofetch
 # tput setaf 12 ; toilet -f smblock "vbalien  @  ThinkPad" -F border
 

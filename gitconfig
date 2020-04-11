@@ -1,6 +1,6 @@
 [commit]
 	gpgsign = true
 [user]
-	signingkey = 0DD2E02DF04268B2
+	signingkey = FD987F8DBE513071
 	name = Jisu Kim
-	email = vbalien@live.jp
+	email = webmaster@alien.moe

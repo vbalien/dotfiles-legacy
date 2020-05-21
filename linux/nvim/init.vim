@@ -1,8 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+" Prettier
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -37,12 +38,18 @@ Plug 'airblade/vim-gitgutter'
 
 " Auto Complete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 
 " LSP
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
+
+" TypeScript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/denite.nvim'
 
 call plug#end()
 
@@ -107,24 +114,25 @@ let g:cpp_experimental_template_highlight = 1
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'c': ['clangd'],
-    \ 'cpp': ['clangd']
+    \ 'cpp': ['clangd'],
     \ }
 execute 'autocmd FileType '
   \ . join(keys(g:LanguageClient_serverCommands), ',')
   \ . ' autocmd BufWritePre <buffer> call LanguageClient#textDocument_formatting_sync()'
 
-" Snippets
-let g:neosnippet#enable_complete_done = 1
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
 " deoplete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-n>" : "\<S-TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+set shortmess+=c
+set completeopt-=preview
+
+" echodoc
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
+
+" prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+

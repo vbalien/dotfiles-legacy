@@ -1,47 +1,48 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
-" On-demand loading
+" NERDTree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" NERDTree git
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
+" fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" 아이콘 폰트 사용
 Plug 'ryanoasis/vim-devicons'
 
+" vscode 컬러 테마
 Plug 'tomasiser/vim-code-dark'
 
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-Plug 'leafgarland/typescript-vim'
-
-Plug 'Quramy/tsuquyomi'
-
+" Language Pack
 Plug 'sheerun/vim-polyglot'
 
+" indent 표시
 Plug 'Yggdroot/indentLine'
 
-Plug 'vim-jp/vim-java'
+" 코딩시간 측정
+Plug 'wakatime/vim-wakatime'
 
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.sh --clang-completer --system-libclang
-  endif
-endfunction
+" git status
+Plug 'airblade/vim-gitgutter'
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Auto Complete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" LSP
+Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
 call plug#end()
 
@@ -62,7 +63,7 @@ set clipboard+=unnamedplus
 
 set laststatus=2
 set shell=/bin/bash
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 set mouse=a
 set encoding=UTF-8
@@ -71,21 +72,21 @@ colorscheme codedark
 nmap <C-p> :FZF<cr>
 nmap <Tab> :NERDTreeToggle<cr>
 
-ca w!! w !sudo tee "%"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " transparent
 hi Normal guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
 
-let g:airline_theme = 'codedark'
-" let g:airline_theme='bubblegum'
-let g:airline_powerline_fonts=1
 
-
+" devicons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 
 " /////////// airline ////////////////
+let g:airline_theme = 'codedark'
+let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -95,13 +96,35 @@ let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 " ////////////////////////////////////
 
-
-" let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-
+" cpp syntax highlight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+
+" LSP
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd']
+    \ }
+execute 'autocmd FileType '
+  \ . join(keys(g:LanguageClient_serverCommands), ',')
+  \ . ' autocmd BufWritePre <buffer> call LanguageClient#textDocument_formatting_sync()'
+
+" Snippets
+let g:neosnippet#enable_complete_done = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-n>" : "\<S-TAB>"

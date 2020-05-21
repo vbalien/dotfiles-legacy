@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.yarn/bin:$HOME/.cargo/bin
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:$HOME/.yarn/bin:$HOME/.cargo/bin
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/vbalien/.oh-my-zsh"
@@ -86,6 +86,8 @@ export SEGMENT_SEPARATOR=$' '
 export VCPKG_ROOT="/home/vbalien/Documents/vcpkg"
 export VCPKG_DOWNLOADS="/var/cache/vcpkg"
 
+export GPG_TTY=$(tty)
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -109,12 +111,10 @@ alias vim="nvim"
 alias open="xdg-open"
 alias pip="pip3"
 alias python="python3"
-alias cat="bat"
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-wmname bspwm
 neofetch
 # tput setaf 12 ; toilet -f smblock "vbalien  @  ThinkPad" -F border
 

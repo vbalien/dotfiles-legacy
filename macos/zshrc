@@ -103,9 +103,9 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias vim=nvim
-alias cat=bat
 source $HOME/.cargo/env
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PROTOC="/usr/local/bin/protoc"
-export PATH="/usr/local/opt/qt/bin:$PATH"
 export SEGMENT_SEPARATOR=$' '
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="/usr/local/opt/qt/bin:$PATH"

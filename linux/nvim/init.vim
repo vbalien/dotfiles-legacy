@@ -5,10 +5,14 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
+" 아이콘 폰트 사용
+Plug 'ryanoasis/vim-devicons'
 " NERDTree
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdtree'
 " NERDTree git
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" NERDTree icon color
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -17,9 +21,6 @@ Plug 'junegunn/fzf.vim'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" 아이콘 폰트 사용
-Plug 'ryanoasis/vim-devicons'
 
 " vscode 컬러 테마
 Plug 'tomasiser/vim-code-dark'
@@ -70,7 +71,7 @@ set clipboard+=unnamedplus
 
 set laststatus=2
 set shell=/bin/bash
-set fillchars+=vert:\
+set fillchars+=vert:┃
 
 set mouse=a
 set encoding=UTF-8
@@ -136,3 +137,8 @@ highlight link EchoDocFloat Pmenu
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
+augroup nerdtree
+  autocmd!
+  autocmd FileType nerdtree syntax clear NERDTreeFlags
+  " other nerdtree related aucomds
+augroup END

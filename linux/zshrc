@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 export TERM=xterm-256color
 # export SEGMENT_SEPARATOR=$'\ue0b4'
-export SEGMENT_SEPARATOR=$' '
+export SEGMENT_SEPARATOR=$''
 
 export VCPKG_ROOT="/home/vbalien/Documents/vcpkg"
 export VCPKG_DOWNLOADS="/var/cache/vcpkg"

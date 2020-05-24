@@ -18,9 +18,9 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #d9000000
+background = #000000
 background-focused = #dd5555
-background-label = #d9000000
+background-label = #000000
 ;foreground = ${xrdb:color7:#222}
 foreground = #ccc
 foreground-focused = #fff
@@ -194,11 +194,11 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = "%Y年%m月%d日 %A"
+date = " %Y年%m月%d日 %A"
 
-time = %H時%M分
+time = %{F#dd5555}%{F-} %H時%M分
 
-format-prefix = "  "
+format-prefix = ""
 format-prefix-foreground = ${colors.secondary}
 #format-underline = ${colors.secondary}
 
@@ -220,23 +220,6 @@ ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 ramp-volume-foreground = ${colors.secondary}
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -252,18 +235,18 @@ format-charging-prefix-foreground = ${colors.secondary}
 format-charging = <label-charging>
 #format-charging-underline = ${colors.secondary}
 
-format-discharging =  <ramp-capacity>  <label-discharging>
+format-discharging =  <ramp-capacity> <label-discharging>
 #format-discharging-underline = ${self.format-charging-underline}
 
 format-full = <ramp-capacity>  <label-full>
-format-full-underline = ${colors.secondary}
+;format-full-underline = ${colors.secondary}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-;ramp-capacity-foreground = ${colors.secondary}
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+ramp-capacity-foreground = ${colors.secondary}
 
 
 [settings]

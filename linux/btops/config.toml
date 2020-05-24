@@ -33,7 +33,7 @@ constant = ""
 "" = ["Lutris"]
 
 [[names.classified]]
-"" = ["smplayer"]
+"" = ["smplayer", "baka-mplayer"]
 
 [[names.classified]]
 "" = ["jetbrains-studio"]

@@ -17,7 +17,7 @@ function conditional_run {
   fi
 }
 
-bspc rule -a smplayer state=floating sticky=on
+bspc rule -a baka-mplayer state=floating sticky=on
 
 killall /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1; /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 killall btops; btops &
@@ -53,6 +53,7 @@ nitrogen --restore &
 # Elan input setting
 xinput set-prop 'Elan Touchpad' 'libinput Tapping Enabled' 1
 xinput set-prop 'Elan Touchpad' 'libinput Natural Scrolling Enabled' 1
+xinput set-prop 'Elan TrackPoint' 'libinput Accel Speed' -0.3
 # magic trackpad 2
 xinput set-prop 'Apple Inc. Magic Trackpad 2' 'libinput Accel Speed' 0.3
 xinput set-prop 'Apple Inc. Magic Trackpad 2' 'libinput Natural Scrolling Enabled' 1
@@ -65,6 +66,7 @@ xsetroot -cursor_name left_ptr
 bspc rule -a '*:zathura' state=tiled
 bspc rule -a Teamviewer state=floating
 bspc rule -a Transgui state=floating
+bspc rule -a TelegramDesktop state=floating sticky=on
 
 bspc config border_width         1
 bspc config window_gap           0

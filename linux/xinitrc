@@ -10,6 +10,7 @@ else
   . ~/.screenlayout/Default.sh
 fi
 
+dex -a
 
 DEFAULTSESSION=bspwm
 case "$1" in

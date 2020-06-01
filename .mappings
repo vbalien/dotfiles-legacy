@@ -4,6 +4,7 @@
 gitconfig         = "~/.gitconfig"
 ncmpcpp           = "~/.ncmpcpp"
 tmux.conf         = "~/.tmux.conf"
+nvim              = "~/.config/nvim"
 
 [darwin]
 "macos/zshrc"     = "~/.zshrc"
@@ -24,7 +25,6 @@ tmux.conf         = "~/.tmux.conf"
 "linux/btops"                  = "~/.config/btops"
 "linux/libinput-gestures.conf" = "~/.config/libinput-gestures.conf"
 "linux/mimeapps.list"          = "~/.config/mimeapps.list"
-"linux/nvim"                   = "~/.config/nvim"
 "linux/picom.conf"             = "~/.config/picom.conf"
 "linux/polybar"                = "~/.config/polybar"
 "linux/rofi"                   = "~/.config/rofi"
